@@ -103,6 +103,20 @@
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
 
+  .vidwrap{max-width:840px;margin:40px auto 0}
+  .vid-intro{font-size:18px;color:var(--ink-soft);line-height:1.5;margin-bottom:26px}
+  .vidcard{background:var(--paper-2);border:1.5px solid var(--line);border-radius:16px;padding:24px 26px;margin-bottom:22px;position:relative;overflow:hidden}
+  .vidcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--u3)}
+  .vid-group{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--u3);font-weight:700}
+  .vid-h{font-family:"Fraunces",serif;font-weight:600;font-size:23px;line-height:1.2;margin:6px 0 8px}
+  .vid-h code{font-family:"JetBrains Mono",monospace;font-size:.78em;font-weight:700;background:var(--paper);border:1.5px solid var(--line);border-radius:7px;padding:1px 7px}
+  .vid-d{font-size:16px;line-height:1.5;color:var(--ink-soft);margin-bottom:8px}
+  .vid-f{font-size:14px;color:var(--ink-soft);margin-bottom:4px}
+  .vid-f code,.vid-d code{font-family:"JetBrains Mono",monospace;font-size:.86em;font-weight:700;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--u2)}
+  .vid{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;margin-top:16px;border:1.5px solid var(--line);background:#000}
+  .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vid-note{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink-soft);text-align:center;margin-top:10px}
+
   footer{padding:60px 0 90px;text-align:center}
   footer p{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft)}
   footer .big{font-family:"Fraunces",serif;font-style:italic;font-weight:500;font-size:28px;text-transform:none;letter-spacing:0;color:var(--ink);margin-bottom:14px}
@@ -157,6 +171,7 @@
       <button data-mode="resumen" class="active">Resumen</button>
       <button data-mode="quiz">Quiz</button>
       <button data-mode="escribir">Escribir</button>
+      <button data-mode="excel">Excel</button>
     </div>
   </div>
   <div class="nav-chips" id="navchips">
@@ -316,6 +331,62 @@
     </div>
   </section>
 
+  <section id="view-excel" class="modeview hidden">
+    <div class="vidwrap">
+      <p class="vid-intro">Videos cortos para resolver en Excel cada fórmula del archivo <b>«Guía TPs Completa»</b>. Cada tarjeta indica qué celdas del TP cubre.</p>
+
+      <div class="vidcard">
+        <p class="vid-group">Base</p>
+        <h3 class="vid-h">Operaciones básicas y referencias de celda</h3>
+        <p class="vid-d">Sumar, restar, multiplicar y dividir usando referencias (<code>=A1*B1</code>). Es la base del <b>Ingreso Total (P·Q)</b>, los <b>medios</b> y las <b>funciones lineales</b> de oferta/demanda.</p>
+        <p class="vid-f">En el archivo: <code>C6*C8</code> · <code>C52/C53</code> · <code>C39-C38</code> · <code>2*C47+3</code> · <code>1000-50*C7</code></p>
+        <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/dxI9g59drTU" title="Operaciones básicas en Excel" allowfullscreen></iframe></div>
+      </div>
+
+      <div class="vidcard">
+        <p class="vid-group">Función</p>
+        <h3 class="vid-h">Función SUMA / Autosuma</h3>
+        <p class="vid-d">Sumar un rango con <code>=SUMA(...)</code> o el botón Autosuma. Se usa para la <b>oferta de mercado</b> (sumar oferentes) y los totales.</p>
+        <p class="vid-f">En el archivo: <code>SUMA(D26:D36)</code> · <code>SUMA(C5:D5)</code> · <code>SUMA(C121+D121)</code></p>
+        <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/4dHMZOWF20A" title="Función SUMA o Autosuma en Excel" allowfullscreen></iframe></div>
+      </div>
+
+      <div class="vidcard">
+        <p class="vid-group">Porcentajes</p>
+        <h3 class="vid-h">Variación porcentual <code>(nuevo − viejo) / viejo</code></h3>
+        <p class="vid-d">El cálculo clave de las <b>elasticidades</b> y de las variaciones (el % de cambio de Q, de P o del ingreso), y la base del <b>marginal</b> entre dos filas.</p>
+        <p class="vid-f">En el archivo: <code>(C7-C6)/C6</code> · <code>(C9-C8)/C8</code> · <code>(C48-C47)/C47</code></p>
+        <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/zy049C4Yq5Q" title="Variación porcentual en Excel" allowfullscreen></iframe></div>
+      </div>
+
+      <div class="vidcard">
+        <p class="vid-group">Promedio</p>
+        <h3 class="vid-h">Promedio / método del punto medio <code>(a + b) / 2</code></h3>
+        <p class="vid-d">Sacar el promedio de dos valores. Es el <b>método del arco</b> para la elasticidad (promedio de los dos precios y las dos cantidades).</p>
+        <p class="vid-f">En el archivo: <code>(C51+C52)/2</code> · <code>(C53+C54)/2</code></p>
+        <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/QIXNf_OdOqA" title="Calcular promedio en Excel" allowfullscreen></iframe></div>
+      </div>
+
+      <div class="vidcard">
+        <p class="vid-group">Porcentajes</p>
+        <h3 class="vid-h">Aumentar un valor un porcentaje <code>valor + x%</code></h3>
+        <p class="vid-d">Subir un precio o un ingreso un porcentaje determinado (ej. +6%, +10%).</p>
+        <p class="vid-f">En el archivo: <code>300+6%</code> · <code>330+6%</code> · <code>5+10%</code></p>
+        <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/w-ufLD8TESI" title="Sumar un porcentaje a un valor en Excel" allowfullscreen></iframe></div>
+      </div>
+
+      <div class="vidcard">
+        <p class="vid-group">Economía aplicada</p>
+        <h3 class="vid-h">Elasticidad precio de la demanda en Excel</h3>
+        <p class="vid-d">Junta todo: variaciones porcentuales, división y el <b>multiplicar por −1</b> para sacar el signo. Arma la elasticidad completa de punta a punta.</p>
+        <p class="vid-f">En el archivo: <code>(C58/C59)/(C60/C61)</code> · <code>C11*-1</code></p>
+        <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/NjkpVc4w7tQ" title="Elasticidad precio de la demanda en Excel" allowfullscreen></iframe></div>
+      </div>
+
+      <p class="vid-note">Videos de terceros (YouTube). Si alguno deja de estar disponible, avisame y lo reemplazo.</p>
+    </div>
+  </section>
+
   <footer>
     <p class="big">A romperla en el parcial.</p>
     <p>U2 · U3 · Fundamentos de Economía I</p>
@@ -326,7 +397,7 @@
 <script>
   /* ============ AUTO-ACTUALIZADOR ============ */
   /* Bump BUILD en cada deploy: las pestañas abiertas detectan la versión nueva y recargan solas. */
-  const BUILD='2026-06-26-1';
+  const BUILD='2026-06-26-2';
   async function checkUpdate(){
     try{
       const r=await fetch(location.pathname+'?_cb='+Math.floor(Date.now()/30000),{cache:'no-store'});
@@ -469,7 +540,7 @@
   }
 
   /* ---- NAVEGACIÓN DE MODOS ---- */
-  const views={resumen:document.getElementById('view-resumen'),quiz:document.getElementById('view-quiz'),escribir:document.getElementById('view-escribir')};
+  const views={resumen:document.getElementById('view-resumen'),quiz:document.getElementById('view-quiz'),escribir:document.getElementById('view-escribir'),excel:document.getElementById('view-excel')};
   document.getElementById('modes').addEventListener('click',e=>{
     const b=e.target.closest('button');if(!b)return;
     document.querySelectorAll('#modes button').forEach(x=>x.classList.remove('active'));
