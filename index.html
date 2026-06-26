@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economía I · 2do Parcial — Mis apuntes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3ece0;--paper-2:#ede4d4;--ink:#1c1714;--ink-soft:#4a4038;--line:#d8cbb6;
+    --u2:#c8552b;--u3:#1f6b56;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;opacity:.6}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(243,236,224,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1100px;margin:0 auto;padding:12px 28px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .nav-brand{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-right:auto;font-weight:700}
+  .chip{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;text-decoration:none;color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;padding:5px 12px;transition:all .18s ease;background:transparent}
+  .chip:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+
+  header.hero{padding:80px 0 50px;border-bottom:3px solid var(--ink)}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--u3);font-weight:700}
+  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(52px,9vw,118px);line-height:.92;letter-spacing:-.02em;margin:14px 0 0}
+  h1 em{font-style:italic;font-weight:500;color:var(--u3)}
+  .hero-meta{display:flex;gap:36px;flex-wrap:wrap;margin-top:34px;font-family:"JetBrains Mono",monospace;font-size:13px}
+  .hero-meta b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-bottom:4px}
+  .hero-meta span{font-size:20px;font-family:"Fraunces",serif;font-weight:600;color:var(--ink)}
+  .hero-lead{max-width:680px;margin-top:30px;font-size:21px;color:var(--ink-soft);line-height:1.5}
+  .hero-lead b{color:var(--ink);font-weight:600}
+
+  section.unit{padding:60px 0;border-bottom:1px solid var(--line)}
+  .unit-head{display:flex;align-items:baseline;gap:20px;margin-bottom:14px}
+  .unit-num{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(60px,11vw,130px);line-height:.8;color:var(--accent);opacity:.9;letter-spacing:-.04em}
+  .unit-titles .u-kicker{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .unit-titles h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(28px,4.5vw,48px);line-height:1.02;letter-spacing:-.01em;margin-top:6px}
+  .unit-weight{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:999px;padding:4px 11px;display:inline-block;margin-bottom:26px}
+
+  .card{background:var(--paper-2);border:1.5px solid var(--line);border-radius:14px;padding:24px 28px;margin-bottom:18px;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent)}
+  .h-main{font-family:"Fraunces",serif;font-weight:600;font-size:23px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+  .h-main .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+  .h-main .tag{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:3px 9px}
+  .h-sub{font-family:"Fraunces",serif;font-weight:600;font-size:18px;color:var(--accent);margin:20px 0 6px;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:4px}
+  .def{margin-bottom:4px}
+  p.linea{margin:4px 0}
+  .formula{font-family:"JetBrains Mono",monospace;font-weight:700;background:var(--paper);border:1.5px solid var(--line);border-radius:9px;padding:2px 8px;font-size:.92em;white-space:nowrap}
+  .fbox{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:18px;text-align:center;background:var(--accent);color:#fff;border-radius:11px;padding:14px;margin:14px 0}
+  .fbox small{display:block;font-family:"Newsreader",serif;font-weight:400;font-size:13px;opacity:.9;margin-top:5px}
+
+  ul{list-style:none;margin-top:6px}
+  ul li{padding:5px 0 5px 24px;position:relative}
+  ul li::before{content:"–";position:absolute;left:4px;color:var(--accent);font-weight:700}
+  ul li b{font-weight:600}
+  ul.sub{margin:2px 0 2px 24px}
+  ul.sub li{font-size:16px;color:var(--ink-soft)}
+
+  ol{list-style:none;counter-reset:s;margin-top:6px}
+  ol li{counter-increment:s;padding:5px 0 5px 36px;position:relative}
+  ol li::before{content:counter(s);position:absolute;left:0;top:6px;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:12px;background:var(--accent);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  @media(max-width:720px){.grid2,.grid3{grid-template-columns:1fr}.unit-head{flex-direction:column;gap:6px}}
+
+  .mini{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:16px 18px}
+  .mini b{font-family:"Fraunces",serif;font-weight:600;color:var(--accent)}
+  .mini.danger{border-color:var(--u2);background:#fbeae6}
+  .mini.danger b{color:var(--u2)}
+  .mini.okk{border-color:var(--u3);background:#e6efe7}
+  .mini.okk b{color:var(--u3)}
+
+  table.eco{width:100%;border-collapse:collapse;font-size:15px;margin-top:10px}
+  table.eco th{background:var(--accent);color:#fff;padding:8px 10px;text-align:left;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+  table.eco td{padding:7px 10px;border-bottom:1px solid var(--line);background:#fff}
+  table.eco tr:nth-child(even) td{background:var(--paper)}
+  .tbl-scroll{overflow-x:auto}
+  table.num td,table.num th{text-align:center}
+  table.num .hl-r td{background:#fbeae6}
+  table.num .hl-g td{background:#e6efe7}
+
+  .note{background:#fff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;font-size:15px;color:var(--ink-soft);margin-top:12px}
+  .note b{color:var(--ink)}
+  .quote{font-style:italic;border-left:4px solid var(--u2);padding:8px 14px;color:var(--ink-soft);margin-top:12px;background:#fff;border-radius:0 10px 10px 0}
+  .star{background:#fff;border:2px solid var(--u2);border-radius:12px;padding:14px 18px;margin-top:14px}
+  .star .lbl{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--u2);display:block;margin-bottom:5px}
+
+  .graph{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:14px;margin-top:12px}
+  .graph svg{width:100%;height:auto;display:block}
+  .graph .cap{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink-soft);text-align:center;margin-top:6px;letter-spacing:.03em}
+  .axis{stroke:#1c1714;stroke-width:1.6}
+  .grid{stroke:#d8cbb6;stroke-width:.8}
+  .lbl{font-family:"JetBrains Mono",monospace;font-size:11px;fill:var(--ink-soft)}
+  .lblb{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  footer{padding:60px 0 90px;text-align:center}
+  footer p{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft)}
+  footer .big{font-family:"Fraunces",serif;font-style:italic;font-weight:500;font-size:28px;text-transform:none;letter-spacing:0;color:var(--ink);margin-bottom:14px}
+
+  .modes{display:flex;gap:4px;background:var(--paper-2);border:1.5px solid var(--line);border-radius:999px;padding:4px;margin-left:auto}
+  .modes button{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);background:transparent;border:0;cursor:pointer;padding:6px 14px;border-radius:999px;transition:.16s}
+  .modes button:hover{color:var(--ink)}
+  .modes button.active{background:var(--ink);color:var(--paper)}
+  .nav-chips{max-width:1100px;margin:0 auto;padding:0 28px 12px;display:flex;gap:8px;flex-wrap:wrap}
+  .hidden{display:none!important}
+  .modeview{padding-bottom:40px}
+
+  .qwrap{max-width:760px;margin:46px auto 0}
+  .qtop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-soft);letter-spacing:.04em}
+  .qtop b{color:var(--u3)}
+  .qcard{background:var(--paper-2);border:1.5px solid var(--line);border-radius:16px;padding:28px;position:relative;overflow:hidden}
+  .qcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent,var(--u3))}
+  .qcard .qgroup{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent,var(--u3));font-weight:700}
+  .qcard .qq{font-family:"Fraunces",serif;font-weight:600;font-size:24px;line-height:1.22;margin:10px 0 22px}
+  .opt{display:block;width:100%;text-align:left;cursor:pointer;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:11px;padding:14px 16px;margin-bottom:10px;font-size:16px;font-family:"Newsreader",serif;line-height:1.4;transition:.14s}
+  .opt:hover:not(:disabled){border-color:var(--ink)}
+  .opt:disabled{cursor:default}
+  .opt.correct{border-color:#1f6b56;background:#e6efe7}
+  .opt.wrong{border-color:#c8552b;background:#fbeae6}
+  .opt .mk{float:right;font-family:"JetBrains Mono",monospace;font-weight:700;margin-left:10px}
+  .qactions{margin-top:6px;display:flex;justify-content:flex-end;gap:10px}
+  .btn{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:var(--ink);color:var(--paper);border:0;padding:11px 20px;border-radius:10px;transition:.15s}
+  .btn:hover{filter:brightness(1.25)}
+  .btn.ghost{background:transparent;color:var(--ink-soft);box-shadow:inset 0 0 0 1.5px var(--line)}
+  .btn.ghost:hover{color:var(--ink)}
+  .fb{font-family:"JetBrains Mono",monospace;font-size:13px;margin:14px 0 2px;min-height:18px}
+  .fb.ok{color:#1f6b56}.fb.no{color:#c8552b}
+  .esc-input{width:100%;min-height:130px;resize:vertical;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;color:var(--ink);font-family:"Newsreader",serif;font-size:17px;line-height:1.55;padding:14px 16px;margin-bottom:14px}
+  .esc-input:focus{outline:none;border-color:var(--accent,var(--u3))}
+  .esc-input:disabled{opacity:.65}
+  .esc-answer{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+  .esc-lbl{font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft);display:block;margin-bottom:6px;font-weight:700}
+  .esc-yours p{font-size:16px;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px;white-space:pre-wrap;margin:0}
+  .esc-ok{border-left:4px solid #1f6b56;padding-left:14px;margin-top:16px}
+  .esc-ok .ans{font-size:17px;margin:0}
+  .esc-rate{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .esc-rate .rate{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;cursor:pointer;background:var(--paper-2);border:1.5px solid var(--line);color:var(--ink);padding:8px 14px;border-radius:8px;transition:.14s}
+  .esc-rate .rate:hover{border-color:var(--accent,var(--u3));color:var(--accent,var(--u3))}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">Economía I · 2do Parcial</span>
+    <div class="modes" id="modes">
+      <button data-mode="resumen" class="active">Resumen</button>
+      <button data-mode="quiz">Quiz</button>
+      <button data-mode="escribir">Escribir</button>
+    </div>
+  </div>
+  <div class="nav-chips" id="navchips">
+    <a class="chip" href="#u2">U2 · Consumidores</a><a class="chip" href="#u3">U3 · Productores</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Mis apuntes · 2do Parcial</p>
+    <h1>Economía<br><em>2do Parcial</em></h1>
+    <p class="hero-lead"><b>80% Unidad 3</b> (productores) y <b>20% Unidad 2</b> (consumidores).</p>
+    <div class="hero-meta">
+      <div><b>Unidades</b><span>2 · 3</span></div>
+      <div><b>Peso</b><span>20% U2 · 80% U3</span></div>
+      <div><b>Cátedra</b><span>Fundamentos de Economía I · UCES</span></div>
+    </div>
+  </header>
+
+  <div id="view-resumen">
+
+  <!-- ===================== U2 ===================== -->
+  <section class="unit reveal" id="u2" style="--accent:var(--u2)">
+    <div class="unit-head"><div class="unit-num">02</div>
+      <div class="unit-titles"><p class="u-kicker">Unidad 2 · Consumidores</p><h2>Elasticidades e Ingreso Total</h2></div></div>
+    <span class="unit-weight">≈ 20% del parcial</span>
+
+    <!-- Elasticidad precio -->
+    <div class="card">
+      <p class="h-main"><span class="dot"></span>Elasticidad Precio de la Demanda (D)</p>
+      <p class="def">Mide qué tan sensibles son los consumidores ante los cambios de precio.</p>
+      <div class="fbox">(Q₁–Q₀)/Q₀ ÷ (P₁–P₀)/P₀</div>
+      <p class="h-sub">Relación con la elasticidad</p>
+      <div class="tbl-scroll">
+      <table class="eco">
+        <thead><tr><th>Tipo de demanda</th><th>Si baja el precio</th><th>¿Qué pasa con IT?</th></tr></thead>
+        <tbody>
+          <tr><td>Elástica (&gt;1)</td><td>Q sube mucho</td><td>IT ↑</td></tr>
+          <tr><td>Inelástica (&lt;1)</td><td>Q sube poco</td><td>IT ↓</td></tr>
+          <tr><td>Unitaria (=1)</td><td>Cambio proporcional</td><td>IT constante</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <!-- Ingreso total -->
+    <div class="card">
+      <p class="h-main"><span class="dot"></span>Ingreso Total</p>
+      <p class="def">Cantidad pagada por los compradores y percibida por los vendedores. Es lo que gana una empresa.</p>
+      <div class="fbox">IT = P · Q
+        <small>P = precio · Q = cantidad</small></div>
+    </div>
+
+    <!-- Elasticidad ingreso -->
+    <div class="card">
+      <p class="h-main"><span class="dot"></span>Elasticidad Ingreso de la Demanda (D)</p>
+      <p class="def">Cómo cambia la demanda cuando cambia el precio.</p>
+      <div class="fbox">(Q₁–Q₀)/Q₀ ÷ (I₁–I₀)/I₀</div>
+      <div class="tbl-scroll">
+      <table class="eco">
+        <thead><tr><th>Resultado</th><th>Tipo de bien</th></tr></thead>
+        <tbody>
+          <tr><td>Positiva (+)</td><td>Bien Normal</td></tr>
+          <tr><td>&gt;1</td><td>Bien de Lujo</td></tr>
+          <tr><td>&lt;1</td><td>Bien Necesario</td></tr>
+          <tr><td>Negativa (–)</td><td>Bien Inferior</td></tr>
+          <tr><td>=0</td><td>Bien Neutro</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== U3 ===================== -->
+  <section class="unit reveal" id="u3" style="--accent:var(--u3)">
+    <div class="unit-head"><div class="unit-num">03</div>
+      <div class="unit-titles"><p class="u-kicker">Unidad 3 · Productores</p><h2>Oferta, Producción y Productor</h2></div></div>
+    <span class="unit-weight">≈ 80% del parcial</span>
+
+    <!-- Ley de oferta -->
+    <div class="card">
+      <p class="h-main"><span class="dot"></span>Ley de Oferta</p>
+      <p class="def">Mientras mayor sea el precio de un bien o servicio, mayor es el deseo de venderlo por los oferentes.</p>
+      <div class="grid2" style="margin-top:6px">
+        <div class="mini danger"><b>Desplazamiento</b><br>Se produce cuando el precio de los factores, tecnología o número de empresas cambia.</div>
+        <div class="mini okk"><b>Movimiento</b><br>Cuando cambia el precio del bien.</div>
+      </div>
+    </div>
+
+    <!-- Producción CP y LP -->
+    <div class="card">
+      <p class="h-main"><span class="dot"></span>Producción en el corto y largo plazo</p>
+      <p class="def"><b>Producción en el CP:</b> estudia la productividad de un factor variable. Esto pasa porque un factor productivo queda fijo y el otro varía. En el CP no se puede cambiar un factor como maquinaria o edificio.</p>
+      <p class="def"><b>Producción en el LP:</b> estudia los rendimientos a escala. Esto pasa porque todos los factores varían en la misma proporción (todos se vuelven variables).</p>
+      <p class="def"><b>Diferencia entre LP y CP:</b> existen factores fijos en el CP.</p>
+    </div>
+
+    <!-- Decisión básica -->
+    <div class="card">
+      <p class="h-main"><span class="dot"></span>Decisión Básica</p>
+      <p class="def">Cuánto producir a un precio de venta específico, con un costo de producción determinado. Esto para poder maximizar las ganancias.</p>
+      <div class="note"><b>Otra decisión (énfasis de la profe):</b> cómo producir y en qué medida utilizar los factores de producción.</div>
+    </div>
+
+    <!-- Isocuanta -->
+    <div class="card">
+      <p class="h-main"><span class="dot"></span>Curva de Isocuanta</p>
+      <p class="def">Combinaciones de dos factores de producción que le dan al productor el mismo nivel de producción.</p>
+      <p class="h-sub">Propiedades</p>
+      <ol>
+        <li>Convexa al origen.</li>
+        <li>Pendiente negativa.</li>
+        <li>No toca los ejes X e Y.</li>
+        <li>No se cruzan entre sí.</li>
+        <li>Forma ovalada.</li>
+      </ol>
+      <div class="fbox">Pendiente = PML / PMK = TMST
+        <small>PML → producto marginal del trabajo · PMK → producto marginal del capital</small></div>
+    </div>
+
+    <!-- Isocosto -->
+    <div class="card">
+      <p class="h-main"><span class="dot"></span>Curva de Isocosto</p>
+      <p class="def">Representación gráfica de los insumos que se pueden usar para producir una cantidad específica a un costo constante.</p>
+      <div class="fbox">CT₀ = wL + rK
+        <small>CT₀ = costo total de producción · w = salario · L = trabajo · r = tasa interés bancaria · K = capital</small></div>
+      <div class="fbox" style="background:var(--u2)">Pendiente = –(w/r)</div>
+    </div>
+
+    <!-- Excedente del productor -->
+    <div class="card">
+      <p class="h-main"><span class="dot"></span>Excedente del Productor</p>
+      <p class="def">Ganancia adicional del costo mínimo al que estaba dispuesto a vender el productor.</p>
+      <div class="fbox">EP = Precio del mercado – Precio mínimo aceptable</div>
+    </div>
+  </section>
+  </div><!-- /view-resumen -->
+
+  <section id="view-quiz" class="modeview hidden">
+    <div class="qwrap">
+      <div class="qtop">
+        <span>Pregunta <b id="q-idx">1</b> · Aciertos <b id="q-score">0</b>/<span id="q-total">0</span></span>
+        <button class="btn ghost" id="q-restart">Reiniciar</button>
+      </div>
+      <div class="qcard" id="quiz-card"></div>
+    </div>
+  </section>
+
+  <section id="view-escribir" class="modeview hidden">
+    <div class="qwrap">
+      <div class="qtop">
+        <span>Consigna <b id="e-idx">1</b>/<span id="e-total">0</span> · De memoria <b id="e-score">0</b></span>
+        <button class="btn ghost" id="e-restart">Reiniciar</button>
+      </div>
+      <div class="qcard" id="esc-card"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="big">A romperla en el parcial.</p>
+    <p>U2 · U3 · Fundamentos de Economía I</p>
+  </footer>
+
+</div>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const chips={};document.querySelectorAll('.chip').forEach(c=>chips[c.getAttribute('href').slice(1)]=c);
+  const spy=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+    Object.values(chips).forEach(c=>c.style.cssText='');
+    const c=chips[e.target.id];if(c){c.style.background='var(--ink)';c.style.color='var(--paper)';}
+  }})},{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('section.unit').forEach(s=>spy.observe(s));
+
+  /* ============ BANCO DE PREGUNTAS (material de cátedra) ============ */
+  const EC=[
+   {u:'U2 · Elasticidad precio de la demanda',c:'var(--u2)',items:[
+     {q:'¿Qué mide la elasticidad precio de la demanda?',a:'Qué tan sensibles son los consumidores ante los cambios de precio.'},
+     {q:'Si baja el precio y la demanda es elástica (>1), ¿qué pasa con el IT?',a:'Q sube mucho y el IT sube.'},
+     {q:'Si baja el precio y la demanda es inelástica (<1), ¿qué pasa con el IT?',a:'Q sube poco y el IT baja.'},
+     {q:'Si baja el precio y la demanda es unitaria (=1), ¿qué pasa con el IT?',a:'El cambio es proporcional y el IT queda constante.'}
+   ]},
+   {u:'U2 · Ingreso Total',c:'var(--u2)',items:[
+     {q:'¿Qué es el ingreso total?',a:'La cantidad pagada por los compradores y percibida por los vendedores. Es lo que gana una empresa.'},
+     {q:'¿Cuál es la fórmula del ingreso total?',a:'IT = P · Q (P = precio, Q = cantidad).'}
+   ]},
+   {u:'U2 · Elasticidad ingreso de la demanda',c:'var(--u2)',items:[
+     {q:'¿Qué mide la elasticidad ingreso de la demanda?',a:'Cómo cambia la demanda cuando cambia el precio.'},
+     {q:'Si la elasticidad ingreso es positiva (+), ¿qué tipo de bien es?',a:'Un bien normal.'},
+     {q:'Si la elasticidad ingreso es mayor que 1, ¿qué tipo de bien es?',a:'Un bien de lujo.'},
+     {q:'Si la elasticidad ingreso es menor que 1, ¿qué tipo de bien es?',a:'Un bien necesario.'},
+     {q:'Si la elasticidad ingreso es negativa (–), ¿qué tipo de bien es?',a:'Un bien inferior.'},
+     {q:'Si la elasticidad ingreso es igual a 0, ¿qué tipo de bien es?',a:'Un bien neutro.'}
+   ]},
+   {u:'U3 · Ley de Oferta',c:'var(--u3)',items:[
+     {q:'¿Qué dice la ley de oferta?',a:'Mientras mayor sea el precio de un bien o servicio, mayor es el deseo de venderlo por los oferentes.'},
+     {q:'¿Qué es un desplazamiento de la curva de oferta?',a:'Se produce cuando el precio de los factores, tecnología o número de empresas cambia.'},
+     {q:'¿Qué es un movimiento de la curva de oferta?',a:'Cuando cambia el precio del bien.'}
+   ]},
+   {u:'U3 · Producción CP y LP',c:'var(--u3)',items:[
+     {q:'¿Qué estudia la producción en el corto plazo (CP)?',a:'La productividad de un factor variable: un factor productivo queda fijo y el otro varía. En el CP no se puede cambiar un factor como maquinaria o edificio.'},
+     {q:'¿Qué estudia la producción en el largo plazo (LP)?',a:'Los rendimientos a escala: todos los factores varían en la misma proporción (todos se vuelven variables).'},
+     {q:'¿Cuál es la diferencia entre LP y CP?',a:'Existen factores fijos en el CP.'}
+   ]},
+   {u:'U3 · Decisión Básica',c:'var(--u3)',items:[
+     {q:'¿Cuál es la decisión básica?',a:'Cuánto producir a un precio de venta específico, con un costo de producción determinado, para poder maximizar las ganancias.'},
+     {q:'¿Cuál es la otra decisión (énfasis de la profe)?',a:'Cómo producir y en qué medida utilizar los factores de producción.'}
+   ]},
+   {u:'U3 · Curva de Isocuanta',c:'var(--u3)',items:[
+     {q:'¿Qué es la curva de isocuanta?',a:'Combinaciones de dos factores de producción que le dan al productor el mismo nivel de producción.'},
+     {q:'¿Cuáles son las propiedades de la isocuanta?',a:'Convexa al origen, pendiente negativa, no toca los ejes X e Y, no se cruzan entre sí y forma ovalada.'},
+     {q:'¿Cuál es la pendiente de la isocuanta?',a:'PML / PMK = TMST (PML: producto marginal del trabajo; PMK: producto marginal del capital).'}
+   ]},
+   {u:'U3 · Curva de Isocosto',c:'var(--u3)',items:[
+     {q:'¿Qué es la curva de isocosto?',a:'Representación gráfica de los insumos que se pueden usar para producir una cantidad específica a un costo constante.'},
+     {q:'¿Cuál es la fórmula del isocosto?',a:'CT₀ = wL + rK (w = salario, L = trabajo, r = tasa interés bancaria, K = capital).'},
+     {q:'¿Cuál es la pendiente del isocosto?',a:'–(w/r).'}
+   ]},
+   {u:'U3 · Excedente del Productor',c:'var(--u3)',items:[
+     {q:'¿Qué es el excedente del productor?',a:'Ganancia adicional del costo mínimo al que estaba dispuesto a vender el productor.'},
+     {q:'¿Cuál es la fórmula del excedente del productor?',a:'EP = Precio del mercado – Precio mínimo aceptable.'}
+   ]}
+  ];
+  const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+  const flat=EC.flatMap(t=>t.items.map(it=>({...it,u:t.u,c:t.c})));
+
+  /* ---- QUIZ ---- */
+  let quiz=[],qi=0,qscore=0;
+  function buildQuiz(){
+    quiz=shuffle(EC.flatMap(t=>t.items.map(it=>{
+      let pool=t.items.filter(x=>x.a!==it.a).map(x=>x.a);
+      if(pool.length<3)pool=pool.concat(shuffle(flat.filter(x=>x.u!==t.u).map(x=>x.a)));
+      return {u:t.u,c:t.c,q:it.q,correct:it.a,options:shuffle([it.a,...shuffle(pool).slice(0,3)])};
+    })));
+    qi=0;qscore=0;document.getElementById('q-total').textContent=quiz.length;renderQ();
+  }
+  function renderQ(){
+    document.getElementById('q-idx').textContent=qi+1;
+    document.getElementById('q-score').textContent=qscore;
+    const it=quiz[qi],card=document.getElementById('quiz-card');
+    card.style.setProperty('--accent',it.c);
+    card.innerHTML='<div class="qgroup">'+it.u+'</div><div class="qq">'+it.q+'</div><div id="opts">'+it.options.map(o=>'<button class="opt">'+o+'</button>').join('')+'</div><div class="fb" id="fb"></div><div class="qactions"><button class="btn hidden" id="q-next">Siguiente →</button></div>';
+    const opts=card.querySelectorAll('.opt');
+    opts.forEach(b=>b.addEventListener('click',()=>{
+      const ok=b.textContent.trim()===it.correct.trim();
+      opts.forEach(x=>{x.disabled=true;if(x.textContent.trim()===it.correct.trim()){x.classList.add('correct');x.innerHTML+=' <span class="mk">✓</span>';}});
+      const fb=document.getElementById('fb');
+      if(ok){qscore++;fb.textContent='¡Correcto!';fb.className='fb ok';}
+      else{b.classList.add('wrong');b.innerHTML+=' <span class="mk">✕</span>';fb.textContent='La respuesta correcta es la marcada en verde.';fb.className='fb no';}
+      document.getElementById('q-score').textContent=qscore;
+      const n=document.getElementById('q-next');n.classList.remove('hidden');
+      n.textContent=qi+1<quiz.length?'Siguiente →':'Ver resultado';
+      n.onclick=()=>{qi+1<quiz.length?(qi++,renderQ()):resultQ();};
+    }));
+  }
+  function resultQ(){
+    const pct=Math.round(qscore/quiz.length*100),card=document.getElementById('quiz-card');
+    card.style.setProperty('--accent','var(--u3)');
+    card.innerHTML='<div class="qgroup">Resultado</div><div class="qq">'+qscore+'/'+quiz.length+' · '+pct+'%</div><p style="color:var(--ink-soft);margin-bottom:20px">'+(pct>=80?'Te lo sabés.':pct>=50?'Vas bien; repasá las que fallaste.':'Volvé al Resumen y reintentá.')+'</p><div class="qactions"><button class="btn" id="q-again">Reintentar</button></div>';
+    document.getElementById('q-idx').textContent=quiz.length;
+    document.getElementById('q-again').onclick=buildQuiz;
+  }
+
+  /* ---- ESCRIBIR ---- */
+  let esc=[],ei=0,escore=0;
+  function buildEsc(){esc=shuffle(flat);ei=0;escore=0;document.getElementById('e-total').textContent=esc.length;renderE();}
+  function renderE(){
+    document.getElementById('e-idx').textContent=ei+1;
+    document.getElementById('e-score').textContent=escore;
+    const it=esc[ei],card=document.getElementById('esc-card');
+    card.style.setProperty('--accent',it.c);
+    card.innerHTML='<div class="qgroup">'+it.u+'</div><div class="qq">'+it.q+'</div><textarea id="e-input" class="esc-input" placeholder="Escribí tu respuesta de memoria…  (Ctrl+Enter para revelar)" spellcheck="false"></textarea><div class="qactions"><button class="btn" id="e-reveal">Revelar respuesta</button></div><div id="e-answer" class="esc-answer hidden"></div>';
+    const ta=document.getElementById('e-input');ta.focus();
+    function reveal(){
+      if(ta.disabled)return;
+      const yours=(ta.value.trim()||'(no escribiste nada)').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+      const ans=document.getElementById('e-answer');
+      ans.innerHTML='<div class="esc-yours"><span class="esc-lbl">Lo que escribiste</span><p>'+yours+'</p></div><div class="esc-ok"><span class="esc-lbl">Respuesta</span><p class="ans">'+it.a+'</p></div><div class="esc-rate">¿Te salió de memoria?<button class="rate" data-r="1">Sí</button><button class="rate" data-r="m">Más o menos</button><button class="rate" data-r="0">No</button></div>';
+      ans.classList.remove('hidden');
+      document.getElementById('e-reveal').disabled=true;ta.disabled=true;
+      ans.querySelectorAll('.rate').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.r==='1')escore++;ei+1<esc.length?(ei++,renderE()):resultE();}));
+      ans.scrollIntoView({behavior:'smooth',block:'nearest'});
+    }
+    ta.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')reveal();});
+    document.getElementById('e-reveal').addEventListener('click',reveal);
+  }
+  function resultE(){
+    document.getElementById('e-idx').textContent=esc.length;
+    document.getElementById('e-score').textContent=escore;
+    const card=document.getElementById('esc-card');card.style.setProperty('--accent','var(--u3)');
+    card.innerHTML='<div class="qgroup">Resultado</div><div class="qq">'+escore+'/'+esc.length+' de memoria</div><div class="qactions"><button class="btn" id="e-again">Reintentar</button></div>';
+    document.getElementById('e-again').onclick=buildEsc;
+  }
+
+  /* ---- NAVEGACIÓN DE MODOS ---- */
+  const views={resumen:document.getElementById('view-resumen'),quiz:document.getElementById('view-quiz'),escribir:document.getElementById('view-escribir')};
+  document.getElementById('modes').addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    document.querySelectorAll('#modes button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    const m=b.dataset.mode;
+    Object.entries(views).forEach(([k,el])=>el.classList.toggle('hidden',k!==m));
+    document.getElementById('navchips').classList.toggle('hidden',m!=='resumen');
+    if(m==='quiz'&&!quiz.length)buildQuiz();
+    if(m==='escribir'&&!esc.length)buildEsc();
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+  document.getElementById('q-restart').addEventListener('click',buildQuiz);
+  document.getElementById('e-restart').addEventListener('click',buildEsc);
+</script>
+</body>
+</html>
